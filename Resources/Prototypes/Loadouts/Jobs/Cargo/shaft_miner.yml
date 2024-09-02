@@ -1,0 +1,24 @@
+
+# OuterClothing
+    
+# Back
+- type: loadout
+  id: ShaftMinerBackpack
+  equipment:
+    back: ClothingBackpackSalvage
+
+- type: loadout
+  id: ShaftMinerSatchel
+  equipment:
+    back: ClothingBackpackSatchelSalvage
+
+- type: loadout
+  id: ShaftMinerDuffel
+  equipment:
+    back: ClothingBackpackDuffelSalvage
+
+# Shoes
+- type: loadout
+  id: MinerBoots
+  equipment:
+    shoes: ClothingShoesBootsSalvage

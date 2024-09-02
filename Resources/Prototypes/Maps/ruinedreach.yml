@@ -1,0 +1,19 @@
+- type: gameMap
+  id: RuinedReach
+  mapName: 'Ruined Reach'
+  mapPath: /Maps/ruinedreach.yml
+  minPlayers: 0
+  stations:
+    RuinedReach:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Ruined Reach {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TG'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_meta.yml
+        - type: StationJobs
+          availableJobs:
+            Captain: [ 0, 0 ]

@@ -183,6 +183,26 @@
 
 - type: entity
   parent: ClothingHeadBase
+  id: ClothingHeadHatHoodExplorerSuit
+  name: explorer suit hood
+  description: The hood of a miner's suit.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hoods/explorer.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hoods/explorer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.6
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    
+- type: entity
+  parent: ClothingHeadBase
   id: ClothingHeadHatHoodIan
   categories: [ HideSpawnMenu ]
   name: ian hood

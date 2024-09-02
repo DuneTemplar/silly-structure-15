@@ -170,6 +170,10 @@ ghost-role-information-loneop-name = Lone Operative
 ghost-role-information-loneop-description = You are a lone nuclear operative. Destroy the station!
 ghost-role-information-loneop-rules = You are a [color=red][bold]Team Antagonist[/bold][/color] with all other nuclear operatives. Covert syndicate agents are not guaranteed to help you.
 
+ghost-role-information-commop-name = Communications Operator
+ghost-role-information-commop-description = You are a syndicate communications operator. Coordinate with syndicate agents and nuclear operatives or go up there yourself and wreak havoc upon those nanotrasen dogs.
+ghost-role-information-commop-rules = You are a [color=red][bold]Team Antagonist[/bold][/color] with any Nuclear Operatives, and optionally syndicate agents. You have no obligation to stay at your outpost.
+
 ghost-role-information-behonker-name = Behonker
 ghost-role-information-behonker-description = You are an antagonist, bring death and honks to those who do not follow the honkmother.
 

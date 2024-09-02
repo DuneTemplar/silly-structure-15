@@ -104,3 +104,16 @@
   parent: SyndicateOperativeGearFull
   equipment:
     pocket2: BaseUplinkRadio60TC
+    
+- type: startingGear
+  id: SyndicateCommOperatorGearFull
+  equipment:
+    pocket1: CommUplinkRadio20TC
+    pocket2: WeaponPistolCobra
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: ClothingBackpackSyndicate
+    ears: ClothingHeadsetAltSyndicate
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsCombatFilled
+    id: SyndiPDA
+    belt: ClothingBeltMilitaryWebbing

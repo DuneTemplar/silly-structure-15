@@ -20,6 +20,26 @@
     - Telecrystal
     balance:
       Telecrystal: 0
+       
+- type: entity
+  id: StorePresetCommUplink
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-uplink
+    categories:
+    - UplinkWeaponry
+    - UplinkAmmo
+    - UplinkExplosives
+    - UplinkChemicals
+    - UplinkDeception
+    - UplinkDisruption
+    - UplinkImplants
+    - UplinkPointless
+    currencyWhitelist:
+    - Telecrystal
+    balance:
+      Telecrystal: 0
 
 - type: entity
   id: StorePresetSpellbook

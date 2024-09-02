@@ -1,0 +1,19 @@
+- type: gameMap
+  id: BluespaceShelter1
+  mapName: 'Bluespace Shelter 1'
+  mapPath: /Maps/bluespaceshelter1.yml
+  minPlayers: 0
+  stations:
+    BluespaceShelter1:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Bluespace Shelter 1 {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TG'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_meta.yml
+        - type: StationJobs
+          availableJobs:
+            Captain: [ 0, 0 ]

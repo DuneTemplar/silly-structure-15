@@ -1,0 +1,19 @@
+- type: gameMap
+  id: SyndieBaseLavaland
+  mapName: 'Syndicate Lavaland Base'
+  mapPath: /Maps/syndiebaselavaland.yml
+  minPlayers: 0
+  stations:
+    SyndieBaseLavaland:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Syndicate Lavaland Base {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TG'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_meta.yml
+        - type: StationJobs
+          availableJobs:
+            Captain: [ 0, 0 ]

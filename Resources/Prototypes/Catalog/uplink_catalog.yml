@@ -17,7 +17,7 @@
   description: uplink-revolver-python-desc
   productEntity: WeaponRevolverPythonAP
   cost:
-    Telecrystal: 8 # Originally was 13 TC but was not used due to high cost
+    Telecrystal: 6 # Originally was 13 TC but was not used due to high cost
   categories:
   - UplinkWeaponry
 
@@ -116,6 +116,55 @@
     whitelist:
       tags:
       - NukeOpsUplink
+      - CommOpUplink
+      
+- type: listing
+  id: UplinkAtriedes
+  name: uplink-atriedes-name
+  description: uplink-atriedes-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/atriedes.rsi, state: base}
+  productEntity: WeaponSubMachineGunAtreides
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - CommOpUplink
+      
+- type: listing
+  id: UplinkTeslagun
+  name: uplink-teslagun-name
+  description: uplink-teslagun-desc
+  icon: { sprite: Objects/Weapons/Guns/Battery/tesla_gun.rsi, state: base}
+  productEntity: WeaponTeslaGun
+  cost:
+    Telecrystal: 16
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - CommOpUplink
+      
+- type: listing
+  id: UplinkRecharger
+  name: uplink-recharger-name
+  description: uplink-recharger-desc
+  icon: { sprite: Objects/Power/portable_recharger.rsi, state: charging}
+  productEntity: PortableRecharger
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - CommOpUplink
 
 - type: listing
   id: UplinkSniperBundle
@@ -124,7 +173,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
   productEntity: BriefcaseSyndieSniperBundleFilled
   cost:
-    Telecrystal: 12
+    Telecrystal: 8
   categories:
   - UplinkWeaponry
 
@@ -135,7 +184,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledSMG
   cost:
-    Telecrystal: 17
+    Telecrystal: 12
   categories:
   - UplinkWeaponry
 
@@ -168,7 +217,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/LMGs/l6.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledLMG
   cost:
-    Telecrystal: 30
+    Telecrystal: 25
   categories:
   - UplinkWeaponry
 
@@ -461,6 +510,7 @@
       whitelist:
         tags:
           - NukeOpsUplink
+          - CommOpUplink
     - !type:BuyerWhitelistCondition
       blacklist:
         components:
@@ -595,6 +645,7 @@
       whitelist:
         tags:
           - NukeOpsUplink
+          - CommOpUplink
     - !type:BuyerWhitelistCondition
       blacklist:
         components:
@@ -851,6 +902,8 @@
     blacklist:
       components:
       - SurplusBundle
+      tags:
+      - CommOpUplink
 
 - type: listing
   id: UplinkSuperSurplusBundle
@@ -870,6 +923,8 @@
     blacklist:
       components:
       - SurplusBundle
+      tags:
+      - CommOpUplink
 
 - type: listing
   id: UplinkSingarityBeacon
@@ -1116,6 +1171,7 @@
       whitelist:
         tags:
           - NukeOpsUplink
+          - CommOpUplink
     - !type:BuyerWhitelistCondition
       blacklist:
         components:
@@ -1751,7 +1807,7 @@
   icon: { sprite:  Objects/Consumable/Food/Baked/bread.rsi, state: baguette}
   productEntity: CombatBakeryKit
   cost:
-    Telecrystal: 6
+    Telecrystal: 3
   categories:
   - UplinkJob
   conditions:

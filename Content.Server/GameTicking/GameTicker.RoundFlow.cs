@@ -10,8 +10,16 @@ using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
+using System.Threading;
 using JetBrains.Annotations;
 using Prometheus;
+using Robust.Shared.Console;
+using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
+using Robust.Shared.Localization;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Maths;
+using Robust.Shared.Toolshed;
 using Robust.Server.Maps;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Audio;
@@ -20,14 +28,48 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Globalization;
+using System.Text;
+using Robust.Shared.GameObjects;
+using Robust.Server.GameObjects;
+using Robust.Shared.IoC;
+using Robust.Shared.Map.Components;
+using System.Numerics;
+using Content.Server.Maps;
+using Robust.Shared.Console;
+using Robust.Shared.ContentPack;
+using Robust.Shared.Map;
+using Robust.Server.Maps;
+using Robust.Shared.ContentPack;
+using Robust.Shared.Prototypes;
+using Content.Server.Administration;
+using Content.Server.Atmos;
+using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
+using Content.Server.Parallax;
+using Content.Shared.Administration;
+using Content.Shared.Atmos;
+using Content.Shared.Gravity;
+using Content.Shared.Movement.Components;
+using Content.Shared.Parallax.Biomes;
+using Robust.Shared.Audio;
+using Robust.Shared.Console;
+using Robust.Shared.Map;
+using Robust.Server.Physics;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.GameTicking
 {
     public sealed partial class GameTicker
     {
         [Dependency] private readonly DiscordWebhook _discord = default!;
+		[Dependency] private readonly IPrototypeManager _protoManager = default!;
+		[Dependency] private readonly IEntityManager _entManager = default!;
+		[Dependency] private readonly SharedMapSystem _mapSystem = default!;
+		[Dependency] private readonly IEntitySystemManager _system = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
-
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
             "Round number.");
@@ -92,6 +134,8 @@ namespace Content.Server.GameTicking
 
             DefaultMap = _mapManager.CreateMap();
             _mapManager.AddUninitializedMap(DefaultMap);
+			
+			
 
             var maps = new List<GameMapPrototype>();
 
@@ -279,10 +323,13 @@ namespace Content.Server.GameTicking
             }
 
             // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
+			
+			
             _mapManager.DoMapInitialize(DefaultMap);
-
+			
             SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
 
+			
             _roundStartDateTime = DateTime.UtcNow;
             RunLevel = GameRunLevel.InRound;
 
@@ -293,6 +340,26 @@ namespace Content.Server.GameTicking
             AnnounceRound();
             UpdateInfoText();
             SendRoundStartedDiscordMessage();
+			
+
+
+			//if (!_protoManager.TryIndex<BiomeTemplatePrototype>("Lava", out var biomeTemplate))
+			//{
+
+			//}
+			//var biomeSystem = _entManager.System<BiomeSystem>();
+			//var mapUid = _mapManager.GetMapEntityId(DefaultMap);
+			//biomeSystem.EnsurePlanet(mapUid, biomeTemplate);
+			
+			//if (!int.TryParse(DefaultMap, out var mapInt))
+			//{
+				
+			//	return;
+			//}
+
+			//var mapId = new MapId(mapInt);
+
+			
 
 #if EXCEPTION_TOLERANCE
             }
@@ -319,7 +386,107 @@ namespace Content.Server.GameTicking
             _roundStartFailCount = 0;
 #endif
             _startingRound = false;
+			DefaultMap = _mapManager.CreateMap();
+            _mapManager.AddUninitializedMap(DefaultMap);
+			
+			if (!_mapManager.MapExists(DefaultMap))
+			{
+				
+				return;
+			}
+
+			if (!_protoManager.TryIndex<BiomeTemplatePrototype>("Lava", out var biomeTemplate))
+			{
+				
+				return;
+			}
+
+            var loadOptions = new MapLoadOptions()
+            {
+                LoadMap = false,
+				Rotation = Angle.Zero
+            };
+            var prototypeManager = IoCManager.Resolve<IPrototypeManager>();			
+            if (!_protoManager.TryIndex<GameMapPrototype>("MiningOutpost", out var gameMap))
+            {
+				return;
+			}
+			if (!_protoManager.TryIndex<GameMapPrototype>("RuinedReach", out var gameMap2))
+            {
+				return;
+			}
+			if (!_protoManager.TryIndex<GameMapPrototype>("BluespaceShelter1", out var gameMapshelter))
+			{
+				return;
+			}
+			if (!_protoManager.TryIndex<GameMapPrototype>("SyndieBaseLavaland", out var gameMapsyndie))
+			{
+				return;
+			}
+			var entityManager = IoCManager.Resolve<IEntityManager>();
+			var gameTicker = entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+			var grids = gameTicker.LoadGameMap(gameMap, DefaultMap, loadOptions, "Mining Outpost");
+			var grids2 = gameTicker.LoadGameMap(gameMap2, DefaultMap, loadOptions, "Ruined Reach");
+			var shelter = gameTicker.LoadGameMap(gameMapshelter, DefaultMap, loadOptions, "Bluespace Shelter 1");
+			var shelter2 = gameTicker.LoadGameMap(gameMapshelter, DefaultMap, loadOptions, "Bluespace Shelter 2");
+			var shelter3 = gameTicker.LoadGameMap(gameMapshelter, DefaultMap, loadOptions, "Bluespace Shelter 3");
+			var syndie = gameTicker.LoadGameMap(gameMapsyndie, DefaultMap, loadOptions, "Syndicate Lavaland Base");
+			var mapUid2 = grids[0];
+			var mapUid3 = grids2[0];
+			var mapUidshelter = shelter[0];
+			var mapUidshelter2 = shelter2[0];
+			var mapUidshelter3 = shelter3[0];
+			var mapUidsyndie = syndie[0];
+			var fixtureSystem = _entManager.System<GridFixtureSystem>();
+			//fixtureSystem.Merge(mapUid2, mapUid, offset, rotation);
+
+			var offset = new Vector2i(1, 1);
+			Angle rotation = Angle.Zero;
+			rotation = Angle.FromDegrees(0);
+			//fixtureSystem.Merge(mapUid, mapUid2, offset, rotation, gridA: gridA, gridB: gridB);
+			//_system.GetEntitySystem<MapLoaderSystem>().LoadMap(DefaultMap, "Maps/miningoutpost.yml", loadOptions);
+			var biomeSystem = _entManager.System<BiomeSystem>();
+			var mapUid = _mapManager.GetMapEntityId(DefaultMap);
+			biomeSystem.EnsurePlanet(mapUid, biomeTemplate);
+			if (!_entManager.TryGetComponent<MapGridComponent>(mapUid, out var gridA) ||
+            !_entManager.TryGetComponent<MapGridComponent>(mapUid2, out var gridB))
+			{
+				return;
+			}
+			_mapManager.DoMapInitialize(DefaultMap);
+			
+			Random rnd = new Random();
+			int repeat = 5;
+			Merge(mapUid, mapUidshelter, rnd.Next(-500, 500), rnd.Next(-500, 500), 0);
+			Merge(mapUid, mapUidshelter2, rnd.Next(-500, 500), rnd.Next(-500, 500), 0);
+			Merge(mapUid, mapUidshelter3, rnd.Next(-500, 500), rnd.Next(-500, 500), 0);
+			Merge(mapUid, mapUidsyndie, rnd.Next(-400, -200), rnd.Next(-200, 200), 0);
+			Merge(mapUid, mapUid2, 1, 1, 0);
+			Merge(mapUid, mapUid3, rnd.Next(200, 400), rnd.Next(-200, 200), 0);
+			int one = -500;
+			int two = 500;
+			
         }
+		
+		public void Merge(EntityUid grid1UID, EntityUid grid2UID, int PX, int PY, int R)
+		{
+
+			var gridAUid = grid1UID;
+			var gridBUid = grid2UID;
+
+			if (!_entManager.TryGetComponent<MapGridComponent>(gridAUid, out var gridA) ||
+				!_entManager.TryGetComponent<MapGridComponent>(gridBUid, out var gridB))
+			{
+				return;
+			}
+
+			Angle rotation = Angle.Zero;
+			rotation = Angle.FromDegrees(R);
+
+			var offset = new Vector2i(PX, PY);
+			var fixtureSystem = _entManager.System<GridFixtureSystem>();
+			fixtureSystem.Merge(gridAUid, gridBUid, offset, rotation, gridA: gridA, gridB: gridB);
+		}
 
         private void RefreshLateJoinAllowed()
         {

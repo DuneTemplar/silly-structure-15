@@ -1,0 +1,19 @@
+- type: gameMap
+  id: MiningOutpost
+  mapName: 'Mining Outpost'
+  mapPath: /Maps/miningoutpost.yml
+  minPlayers: 0
+  stations:
+    MiningOutpost:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Mining Outpost {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TG'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_meta.yml
+        - type: StationJobs
+          availableJobs:
+            Captain: [ 0, 0 ]

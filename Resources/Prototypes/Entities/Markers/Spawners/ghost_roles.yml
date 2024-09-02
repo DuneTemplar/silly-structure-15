@@ -107,7 +107,29 @@
       - state: green
       - sprite: Structures/Wallmounts/signs.rsi
         state: radiation
+    
 
+- type: entity
+  name: Syndie Comms Operator Spawner
+  id: SpawnPointSyndieCommsOperator
+  parent: MarkerBase
+  suffix: DEBUG
+  components:
+  - type: GhostRole
+    name: ghost-role-information-commop-name
+    description: ghost-role-information-commop-description
+    rules: ghost-role-information-commop-rules
+    raffle:
+    settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobHumanSyndieCommsOperator
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Structures/Wallmounts/signs.rsi
+      state: radiation
+       
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
   parent: SpawnPointLoneNukeOperative

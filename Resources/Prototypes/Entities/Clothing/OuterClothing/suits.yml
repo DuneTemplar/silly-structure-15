@@ -27,6 +27,34 @@
     - WhitelistChameleon
   - type: ClothingRequiredStepTriggerImmune
     slots: WITHOUT_POCKET
+    
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: ClothingOuterSuitExplorer
+  name: explorer suit
+  description: An armored suit made to withstand the rough conditions miners face.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Suits/explorer.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Suits/explorer.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.4
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerSuit
+    slot: head
+  - type: GroupExamine
+  - type: Tag
+  - type: ClothingRequiredStepTriggerImmune
+    slots: WITHOUT_POCKET
 
 - type: entity
   parent: ClothingOuterSuitBomb

@@ -233,6 +233,17 @@
   - Trinkets
   - GroupSpeciesBreathTool
 
+- type: roleLoadout
+  id: JobShaftMiner
+  groups:
+  - GroupTankHarness
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  
 # Engineering
 - type: roleLoadout
   id: JobChiefEngineer
@@ -389,6 +400,20 @@
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
 
+- type: roleLoadout
+  id: JobBrigmedic
+  groups:
+  - GroupTankHarness
+  - SurvivalSecurity
+  - BrigmedicJumpsuit
+  - BrigmedicHead
+  - BrigmedicOuterClothing
+  - BrigmedicShoes
+  - BrigmedicMask
+  - BrigmedicGloves
+  - Trinkets
+  - GroupSpeciesBreathToolSecurity
+  
 - type: roleLoadout
   id: JobSecurityCadet
   groups:

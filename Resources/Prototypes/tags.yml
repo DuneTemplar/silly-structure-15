@@ -424,6 +424,9 @@
 
 - type: Tag
   id: CombatKnife
+  
+- type: Tag
+  id: CommOpUplink
 
 - type: Tag
   id: ComputerTelevisionCircuitboard

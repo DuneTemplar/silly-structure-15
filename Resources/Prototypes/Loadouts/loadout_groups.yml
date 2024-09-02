@@ -647,6 +647,26 @@
   - SalvageBoots
   - CargoWinterBoots
 
+- type: loadoutGroup
+  id: ShaftMinerBackpack
+  name: loadout-group-shaft-miner-backpack
+  loadouts:
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+
+- type: loadoutGroup
+  id: ShaftMinerOuterClothing
+  name: loadout-group-shaft-miner-outerclothing
+  minLimit: 0
+  loadouts:
+  - ShaftMinerSuit
+
+- type: loadoutGroup
+  id: ShaftMinerShoes
+  name: loadout-group-shaft-miner-shoes
+  loadouts:
+  - SalvageBoots
 # Engineering
 - type: loadoutGroup
   id: ChiefEngineerHead
@@ -1052,6 +1072,47 @@
   - RedJumpsuit
   - RedJumpskirt
 
+- type: loadoutGroup
+  id: BrigmedicJumpsuit
+  name: loadout-group-security-cadet-jumpsuit
+  loadouts:
+  - MedicalDoctorJumpsuit
+  - MedicalDoctorJumpskirt
+  - BrigmedicJumpsuit
+  - BrigmedicJumpskirt
+  
+- type: loadoutGroup
+  id: BrigmedicHead
+  name: loadout-group-security-cadet-jumpsuit
+  loadouts:
+  - BrigmedicBeret
+  
+- type: loadoutGroup
+  id: BrigmedicOuterClothing
+  name: loadout-group-security-cadet-jumpsuit
+  loadouts:
+  - ClothingOuterCoatAMG
+  
+- type: loadoutGroup
+  id: BrigmedicShoes
+  name: loadout-group-security-cadet-jumpsuit
+  loadouts:
+  - JackBoots
+  - SecurityWinterBoots
+  
+- type: loadoutGroup
+  id: BrigmedicMask
+  name: loadout-group-security-cadet-jumpsuit
+  loadouts:
+  - ClothingMaskBreathMedicalSecurity
+
+- type: loadoutGroup
+  id: BrigmedicGloves
+  name: loadout-group-security-cadet-jumpsuit
+  loadouts:
+  - LatexGloves
+  - NitrileGloves
+  
 - type: loadoutGroup
   id: SurvivalSecurity
   name: loadout-group-survival-security
