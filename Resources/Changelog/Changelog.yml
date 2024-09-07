@@ -1,19 +1,4 @@
 ﻿Entries:
-- author: Macoron
-  changes:
-  - message: Fixed SSD indicator for dwarfs.
-    type: Fix
-  id: 6799
-  time: '2024-06-22T01:11:40.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/29310
-- author: EmoGarbage404
-  changes:
-  - message: Deconstructing a damaged AME core now yields steel instead of a full
-      AME flatpack.
-    type: Tweak
-  id: 6800
-  time: '2024-06-22T04:15:21.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/29317
 - author: Errant
   changes:
   - message: Items should no longer be missing from backpacks at spawn.
@@ -3850,3 +3835,21 @@
   id: 7298
   time: '2024-09-06T23:30:24.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/31893
+- author: Boaz1111
+  changes:
+  - message: Energy Shotgun's narrow fire mode's projectiles now deal 13 heat dmg
+      each, for a total of 52. The energy shotgun additionally no longer self recharges
+      and has received some minor buffs.
+    type: Tweak
+  id: 7299
+  time: '2024-09-07T00:35:01.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/31235
+- author: themias
+  changes:
+  - message: Added the justice helm to the secdrobe
+    type: Add
+  - message: Added a crafting recipe for the justice helm
+    type: Add
+  id: 7300
+  time: '2024-09-07T03:04:31.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/31905
